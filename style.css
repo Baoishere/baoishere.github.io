@@ -1,69 +1,141 @@
 /* Thiết lập cơ bản */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
 body {
-    background-color: #f3f4f6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    background-color: #0d1117; /* Màu nền đen đậm */
+    font-family: 'Arial', sans-serif;
     padding: 20px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #c9d1d9; /* Màu chữ xám nhạt */
 }
 
-/* Container chính */
-.container {
-    text-align: center;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
+/* Thẻ card chính */
+.card {
+    background: #161b22;
+    border-radius: 20px;
+    max-width: 500px;
+    border: 2px solid #1f6feb;
+    box-shadow: 0 0 20px rgba(31, 111, 235, 0.5);
+    transition: all 0.3s;
+    animation: pop 0.6s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(31, 111, 235, 0.2);
+}
+
+/* Hiệu ứng phóng to khi card xuất hiện */
+@keyframes pop {
+    0% { transform: scale(0.8); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 /* Ảnh đại diện */
 .avatar {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    margin-bottom: 20px;
+    border: 5px solid #1f6feb;
+    box-shadow: 0 0 15px rgba(31, 111, 235, 0.5);
     object-fit: cover;
 }
 
-/* Tiêu đề */
+/* Tên hiển thị */
 h1 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #333;
+    font-size: 2.5rem;
+    color: #58a6ff; /* Màu xanh dương neon */
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(31, 111, 235, 0.7);
 }
 
-/* Các nút mạng xã hội */
-.social-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+/* Các nút liên kết mạng xã hội */
+.social-links a {
+    display: block;
+    margin: 10px 0;
+    padding: 12px 20px;
+    border-radius: 10px;
     color: white;
     text-decoration: none;
-    font-size: 1rem;
-    transition: background 0.3s, transform 0.1s;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    background-color: #161b22;
+    box-shadow: inset 0 0 10px rgba(31, 111, 235, 0.5), 0 0 15px rgba(31, 111, 235, 0.2);
 }
 
-.btn:hover {
-    transform: translateY(-2px);
+/* Hiệu ứng hover */
+.social-links a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(31, 111, 235, 0.3);
+    border-color: #1f6feb;
 }
 
-/* Màu sắc cho các nút */
-.facebook { background-color: #1877f2; }
-.instagram { background-color: #e1306c; }
-.discord { background-color: #1da1f2; }
+.social-links a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(31, 111, 235, 0.2);
+    transition: all 0.7s;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.social-links a:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Màu sắc nút */
+.btn-facebook { background-color: #1f6feb; }
+.btn-instagram { 
+    background-color: #1f6feb; /* Màu xanh dương neon */
+    color: white;
+}
+.btn-discord { background-color: #7289da; }
+.btn-github { background-color: #333; }
+
+/* Cải thiện hiệu ứng neon cho tất cả các nút */
+.social-links a {
+    display: block;
+    margin: 10px 0;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    background-color: #161b22;
+    box-shadow: 
+        inset 0 0 10px rgba(31, 111, 235, 0.5), 
+        0 0 15px rgba(31, 111, 235, 0.2);
+}
+
+/* Hiệu ứng hover neon cho đồng nhất */
+.social-links a:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 8px 15px rgba(31, 111, 235, 0.3), 
+        0 0 20px rgba(31, 111, 235, 0.5);
+    border-color: #1f6feb;
+    background-color: rgba(31, 111, 235, 0.8);
+}
+
+/* Màu icon luôn trắng để nổi bật */
+.social-links i {
+    margin-right: 10px;
+    animation: bounce 1.5s infinite;
+    color: white;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
